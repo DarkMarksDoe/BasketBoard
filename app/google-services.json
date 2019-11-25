@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "528414059375",
+    "firebase_url": "https://basketboard-f22d6.firebaseio.com",
+    "project_id": "basketboard-f22d6",
+    "storage_bucket": "basketboard-f22d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528414059375:android:a8d44252577d3de908d69a",
+        "android_client_info": {
+          "package_name": "com.darkmarksdoe.basketboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528414059375-1qe3ndnrngtrgj0ck0phdl75l9lpuuv6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkmarksdoe.basketboard",
+            "certificate_hash": "991c56833f40e3a793c1b7d1b8cb999e15077979"
+          }
+        },
+        {
+          "client_id": "528414059375-bkeu02a7ngj9nlu7sq2ot846bv0hsnfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWfFytwB6gsAb2HJ4FgdwnYqWU_a_lcYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528414059375-bkeu02a7ngj9nlu7sq2ot846bv0hsnfd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

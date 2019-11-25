@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Vistas.MainActivity"
+    android:weightSum="15">
+
+    <!--//Layout imagen-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="6"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="10">
+        <!--
+        LAYOUT IMAGEN DE LOGIN
+-->
+        <ImageView
+            android:id="@+id/imagenLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_weight="9"
+            app:srcCompat="@drawable/login_app_logo"
+            android:contentDescription="@string/descripcion_imagen_login" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+<!--
+        LAYOUT CAMPOS DE ENTRADA
+-->
+        <EditText
+            android:id="@+id/txt_login_Usuario"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:autofillHints=""
+            android:background="@drawable/custom_button_bg"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/hint_login_usuario"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
+        <TextView
+            android:id="@+id/tvEspacioLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:drawablePadding="5dp"
+            android:id="@+id/txt_login_Contra"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:hint="@string/hint_login_contra"
+            android:ems="10"
+            android:background="@drawable/custom_button_bg"
+            android:autofillHints="" tools:targetApi="o" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+<!--
+        LAYOUT BOTON LOGIN Y CONTRASEÑA
+-->
+        <com.spark.submitbutton.SubmitButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/btn_iniciar_sesion"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            app:sub_btn_background="@color/colorPrincipal"
+            app:sub_btn_duration="3000"
+            app:sub_btn_line_color="@color/colorPrincipal"
+            app:sub_btn_tick_color="@color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
