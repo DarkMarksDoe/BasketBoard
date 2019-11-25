@@ -8,4 +8,5 @@
     <string name="hint_login_contra">   Contraseña</string>
     <string name="descripcion_imagen_login">Imagen Logotipo</string>
     <string name="recordar_contrasena">Olvidé mi contraseña</string>
+    <string name="btn_nuevoPartido">Nuevo Partido</string>
 </resources>

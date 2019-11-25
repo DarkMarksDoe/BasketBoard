@@ -3,6 +3,7 @@ package com.darkmarksdoe.basketboard.Vistas;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
                     }else{
                         if(task.isCanceled()){
                             Toast.makeText(MainActivity.this, "Inicio cancelado", Toast.LENGTH_SHORT).show();
@@ -85,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-
         }else{
             if(TextUtils.isEmpty(correo)){
                 Toast.makeText(this, "Correo vacío", Toast.LENGTH_SHORT).show();
