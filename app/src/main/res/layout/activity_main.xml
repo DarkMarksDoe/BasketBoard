@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Última actualización: 24/11/2019 - 9:05 p.m."/>
+            android:text="Última actualización: 25/11/2019 - 12:40 a.m."/>
 
         <ImageView
             android:id="@+id/imagenLogo"
