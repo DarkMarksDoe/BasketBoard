@@ -21,6 +21,10 @@
         <!--
         LAYOUT IMAGEN DE LOGIN
 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Última actualización: 24/11/2019 - 9:05 p.m."/>
         <ImageView
             android:id="@+id/imagenLogo"
             android:layout_width="wrap_content"
