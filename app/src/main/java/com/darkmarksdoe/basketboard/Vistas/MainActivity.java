@@ -3,12 +3,9 @@ package com.darkmarksdoe.basketboard.Vistas;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,28 +14,36 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.spark.submitbutton.SubmitButton;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private SubmitButton btn_login;
-    private EditText txt_login_Correo, txt_login_Contra;
+    EditText txt_login_Correo, txt_login_Contra;
     private FirebaseAuth.AuthStateListener miListenerDeAutenticacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
-        cargarElementos();
-        cargarEventos();
+        mAuth = FirebaseAuth.getInstance();
+        try {
+            cargarElementos();
+            cargarEventos();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+
+        }
     }
 
     private void cargarEventos() {
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  firebaseLogin();
+                    try {
+                        firebaseLogin();
+                    }catch (Exception e){
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
             miListenerDeAutenticacion = new FirebaseAuth.AuthStateListener() {
@@ -57,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(miListenerDeAutenticacion);
+        try { mAuth.addAuthStateListener(miListenerDeAutenticacion);
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void firebaseLogin() {
@@ -86,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
     }
 
     private void cargarElementos() {
@@ -95,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             txt_login_Contra = findViewById(R.id.txt_login_Contra);
 
         }catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
