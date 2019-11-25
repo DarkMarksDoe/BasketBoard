@@ -1,22 +1,20 @@
-package com.darkmarksdoe.basketboard;
+package com.darkmarksdoe.basketboard.Modelos;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.darkmarksdoe.basketboard.PartidosFragment.OnListFragmentInteractionListener;
+import com.darkmarksdoe.basketboard.Vistas.Fragmentos.PartidosFragment.OnListFragmentInteractionListener;
+import com.darkmarksdoe.basketboard.R;
 import com.darkmarksdoe.basketboard.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyPartidosRecyclerViewAdapter extends RecyclerView.Adapter<MyPartidosRecyclerViewAdapter.ViewHolder> {
 
     private final List<DummyItem> mValues;
@@ -34,11 +32,12 @@ public class MyPartidosRecyclerViewAdapter extends RecyclerView.Adapter<MyPartid
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText("LNBP 2019-2020    02/11/2019     FINAL");
+        holder.mContentView.setText("Equipo " + position + " vs Equipo " + (position+1));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

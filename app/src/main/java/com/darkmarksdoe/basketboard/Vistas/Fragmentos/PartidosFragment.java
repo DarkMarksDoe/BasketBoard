@@ -1,4 +1,4 @@
-package com.darkmarksdoe.basketboard;
+package com.darkmarksdoe.basketboard.Vistas.Fragmentos;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.darkmarksdoe.basketboard.Modelos.MyPartidosRecyclerViewAdapter;
+import com.darkmarksdoe.basketboard.R;
 import com.darkmarksdoe.basketboard.dummy.DummyContent;
 import com.darkmarksdoe.basketboard.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -77,6 +77,7 @@ public class PartidosFragment extends Fragment {
     }
 
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -94,16 +95,7 @@ public class PartidosFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);

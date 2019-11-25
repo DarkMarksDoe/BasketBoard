@@ -13,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/LoginStyle"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Vistas.PrincipalActivity"></activity>
-        <activity android:name=".Vistas.MainActivity">
+        <activity android:name=".Vistas.Actividades.CrearPartidoActivity"></activity>
+        <activity android:name=".Vistas.Actividades.PrincipalActivity" />
+        <activity android:name=".Vistas.Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Vistas.PartidosFragment">
+        <activity android:name=".Vistas.Fragmentos.PartidosFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

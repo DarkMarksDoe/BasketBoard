@@ -1,4 +1,4 @@
-package com.darkmarksdoe.basketboard.Vistas;
+package com.darkmarksdoe.basketboard.Vistas.Actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,7 @@ import com.spark.submitbutton.SubmitButton;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private SubmitButton btn_login;
-    EditText txt_login_Correo, txt_login_Contra;
+    private EditText txt_login_Correo, txt_login_Contra;
     private FirebaseAuth.AuthStateListener miListenerDeAutenticacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,
                                 "INICIO CORRECTO:\n" + firebaseAuth.getCurrentUser().getEmail().toString(),
                                 Toast.LENGTH_SHORT).show();
-                        mAuth.signOut();
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
+                        //mAuth.signOut();
                     }
                 }
             };
@@ -77,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
-                        startActivity(intent);
+
                     }else{
                         if(task.isCanceled()){
                             Toast.makeText(MainActivity.this, "Inicio cancelado", Toast.LENGTH_SHORT).show();

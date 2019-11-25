@@ -3,10 +3,14 @@
     <string name="submit" />
     <string name="texto_boton_login">Iniciar Sesión</string>
     <string name="imagen_logotipo">Imagen Logotipo</string>
-    <string name="btn_iniciar_sesion">Iniciar Sesión</string>
+    <string name="btn_iniciar_sesion">INICIAR SESIÓN</string>
     <string name="hint_login_usuario">   Correo electrónico</string>
     <string name="hint_login_contra">   Contraseña</string>
     <string name="descripcion_imagen_login">Imagen Logotipo</string>
     <string name="recordar_contrasena">Olvidé mi contraseña</string>
-    <string name="btn_nuevoPartido">Nuevo Partido</string>
+    <string name="btn_nuevoPartido">NUEVO PARTIDO</string>
+    <string name="btn_ver">Ver</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
