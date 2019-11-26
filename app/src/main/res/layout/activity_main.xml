@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Última actualización: 25/11/2019 - 12:40 a.m."/>
+            android:text="Última actualización: 26/11/2019 - 2:43 a.m."/>
 
         <ImageView
             android:id="@+id/imagenLogo"
@@ -54,6 +54,7 @@
             android:autofillHints=""
             android:background="@drawable/custom_button_bg"
             android:drawablePadding="5dp"
+            android:paddingStart="15dp"
             android:ems="12"
             android:fontFamily="@font/roboto"
             android:hint="@string/hint_login_usuario"
@@ -73,6 +74,7 @@
             android:layout_gravity="center"
             android:layout_weight="4"
             android:autofillHints=""
+            android:paddingStart="15dp"
             android:background="@drawable/custom_button_bg"
             android:drawablePadding="5dp"
             android:ems="12"

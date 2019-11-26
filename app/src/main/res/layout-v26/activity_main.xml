@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Última actualización: 24/11/2019 - 9:05 p.m."/>
+            android:text="Última actualización: 26/11/2019 - 2:43 a.m."/>
 
         <ImageView
             android:id="@+id/imagenLogo"
@@ -52,6 +52,7 @@
             android:layout_gravity="center"
             android:layout_weight="4"
             android:autofillHints=""
+            android:paddingStart="15dp"
             android:background="@drawable/custom_button_bg"
             android:drawablePadding="5dp"
             android:ems="12"
@@ -73,6 +74,7 @@
             android:layout_gravity="center"
             android:layout_weight="4"
             android:autofillHints=""
+            android:paddingStart="15dp"
             android:background="@drawable/custom_button_bg"
             android:drawablePadding="5dp"
             android:ems="12"

@@ -33,8 +33,7 @@
             android:layout_weight="1"
             app:ms_padding_left="55dp"
             android:fontFamily="@font/roboto"
-            android:textAlignment="center"
-            tools:targetApi="lollipop" />
+            android:textAlignment="center" />
 
         <TextView
             android:layout_width="match_parent"
@@ -42,17 +41,14 @@
             android:layout_weight="3"/>
 
         <com.jaredrummler.materialspinner.MaterialSpinner
-            android:gravity="center"
-            android:id="@+id/et1_spinner_equipo2"
             android:elevation="2dp"
             android:popupBackground="@android:drawable/dialog_holo_light_frame"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_weight="1"
-            app:ms_padding_left="55dp"
             android:fontFamily="@font/roboto"
             android:textAlignment="center"
-            tools:targetApi="lollipop" />
+            android:id="@+id/et1_spinner_equipo2"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

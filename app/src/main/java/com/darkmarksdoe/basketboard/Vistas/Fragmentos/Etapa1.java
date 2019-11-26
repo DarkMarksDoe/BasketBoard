@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +35,13 @@ import java.util.List;
 
 public class Etapa1 extends Fragment {
     private static final String PADRE_RUTA = "Equipos";
-    FirebaseDatabase database;
+    private FirebaseDatabase database;
 
-    final List<String> nomeConsulta = new ArrayList<String>();
+    private final List<String> nomeConsulta = new ArrayList<String>();
 
-    Spinner et1_spinner_equipo1;
-    Spinner et1_spinner_equipo2;
-    View view;
+    private MaterialSpinner spinerEquipo1;
+    private MaterialSpinner spinerEquipo2;
+    private View view;
 
     private OnFragmentInteractionListener mListener;
 
@@ -81,8 +82,8 @@ public class Etapa1 extends Fragment {
                     }
                     ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
                     areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    et1_spinner_equipo1.setAdapter(areasAdapter);
-                    et1_spinner_equipo2.setAdapter(areasAdapter);
+                    spinerEquipo1.setAdapter(areasAdapter);
+                    spinerEquipo2.setAdapter(areasAdapter);
                 }
 
                 @Override
@@ -93,8 +94,8 @@ public class Etapa1 extends Fragment {
     }
 
     private void cargarElementos() {
-        et1_spinner_equipo1 = view.findViewById(R.id.et1_spinner_equipo1);
-        et1_spinner_equipo2 = view.findViewById(R.id.et1_spinner_equipo2);
+        spinerEquipo1 = view.findViewById(R.id.et1_spinner_equipo1);
+        spinerEquipo2 = view.findViewById(R.id.et1_spinner_equipo2);
     }
 
     @Override
