@@ -41,7 +41,11 @@ public class Etapa1 extends Fragment {
 
     private MaterialSpinner spinerEquipo1;
     private MaterialSpinner spinerEquipo2;
+    private MaterialSpinner spinerJornada;
+    private MaterialSpinner spinerSede;
     private View view;
+
+    String Eq1, Eq2, Jornada, Sede;
 
     private OnFragmentInteractionListener mListener;
 
@@ -78,11 +82,14 @@ public class Etapa1 extends Fragment {
 
                     for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
                         String areaName = areaSnapshot.child("Nombre").getValue(String.class);
-                        areas.add(areaName);
+
+                            areas.add(areaName);
+
                     }
                     ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
                     areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinerEquipo1.setAdapter(areasAdapter);
+                    areasAdapter.remove(Eq1);
                     spinerEquipo2.setAdapter(areasAdapter);
                 }
 
@@ -91,11 +98,42 @@ public class Etapa1 extends Fragment {
 
                 }
             });
+
+            reference.child("Equipos").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    final List<String> sedes = new ArrayList<>();
+
+                    for (DataSnapshot sedeSnapshot: dataSnapshot.getChildren()){
+                        String Sede = sedeSnapshot.child("Sede").getValue(String.class);
+                        sedes.add(Sede);
+                    }
+
+                    ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, sedes);
+                    sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinerSede.setAdapter(sedesAdapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            spinerEquipo1.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                    Eq1 = item.toString();
+                    Toast.makeText( view.getContext(), ""+Eq1, Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 
     private void cargarElementos() {
         spinerEquipo1 = view.findViewById(R.id.et1_spinner_equipo1);
         spinerEquipo2 = view.findViewById(R.id.et1_spinner_equipo2);
+        spinerJornada = view.findViewById(R.id.et1_spinner_jornada);
+        spinerSede = view.findViewById(R.id.et1_spinner_sede);
     }
 
     @Override

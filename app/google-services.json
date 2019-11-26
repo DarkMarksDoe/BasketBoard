@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "528414059375-qajbmbd3qa4pqvihsi3h4qguk76i2cad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkmarksdoe.basketboard",
+            "certificate_hash": "29d7a681a0087298ff88f5aecce7468de6725578"
+          }
+        },
+        {
           "client_id": "528414059375-1qe3ndnrngtrgj0ck0phdl75l9lpuuv6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
