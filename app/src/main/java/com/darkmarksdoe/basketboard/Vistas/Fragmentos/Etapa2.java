@@ -4,26 +4,27 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.darkmarksdoe.basketboard.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Etapa2.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Etapa2#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Etapa2 extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -32,20 +33,26 @@ public class Etapa2 extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    //Instancias propias
+    private View view;
+    private FirebaseDatabase database;
+    MaterialSpinner et2_spinner_crew_chief,et2_spinner_umpire1;
+    private final static String PATH_ARBITROS = "Arbitros";
+
+
+    private final List<String> lista_crew_chief = new ArrayList<>();
+    private final List<String> lista_umpire1 = new ArrayList<>();
+    private final List<String> lista_umpire2 = new ArrayList<>();
+    private final List<String> lista_scorer = new ArrayList<>();
+    private final List<String> lista_assistent_scorer = new ArrayList<>();
+    private final List<String> timer = new ArrayList<>();
+
 
     public Etapa2() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Etapa2.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Etapa2 newInstance(String param1, String param2) {
         Etapa2 fragment = new Etapa2();
         Bundle args = new Bundle();
@@ -67,11 +74,59 @@ public class Etapa2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_etapa2, container, false);
+        view = inflater.inflate(R.layout.fragment_etapa2, container, false);
+        database = FirebaseDatabase.getInstance();
+        cargarElementos();
+        agregarTituloListas();
+        llenarSpiners();
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
+    private void cargarElementos() {
+        et2_spinner_crew_chief = view.findViewById(R.id.et2_spinner_crew_chief);
+        et2_spinner_umpire1 = view.findViewById(R.id.et2_spinner_umpire1);
+    }
+
+
+    private void agregarTituloListas() {
+        lista_crew_chief.add("Crew Chief");
+        lista_umpire1.add("Umpire 1");
+        lista_umpire2.add("Umpire 2");
+        lista_scorer.add("Scorer");
+        lista_assistent_scorer.add("Assistent Scorer");
+        timer.add("Timer");
+    }
+
+
+    private void llenarSpiners() {
+        //AQUI SE LLENAN LOS SPINNERS INICIALES
+        //SE NECESITARÍA UN MÉTODO PARA LLENARLOS CADA QUE OCURRA UN EVENTO.
+        DatabaseReference reference = database.getReference();
+        reference.child(PATH_ARBITROS).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
+                    String areaName = areaSnapshot.child("Nombre").getValue(String.class);
+                    lista_crew_chief.add(areaName);
+                    lista_assistent_scorer.add(areaName);
+                }
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_crew_chief);
+                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                et2_spinner_crew_chief.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_assistent_scorer);
+                et2_spinner_umpire1.setAdapter(areasAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -95,16 +150,7 @@ public class Etapa2 extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

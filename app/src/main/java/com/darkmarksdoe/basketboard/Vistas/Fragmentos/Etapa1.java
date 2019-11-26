@@ -74,7 +74,7 @@ public class Etapa1 extends Fragment {
 
     private void llenarSpinners() {
         DatabaseReference reference = database.getReference();
-            reference.child("Equipos").addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -99,7 +99,7 @@ public class Etapa1 extends Fragment {
                 }
             });
 
-            reference.child("Equipos").addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     final List<String> sedes = new ArrayList<>();
