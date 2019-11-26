@@ -1,26 +1,32 @@
 package com.darkmarksdoe.basketboard.Vistas.Fragmentos;
 
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.darkmarksdoe.basketboard.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Etapa3.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Etapa3#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Etapa3 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +38,14 @@ public class Etapa3 extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //Mis datos
+    View view;
+    private DatabaseReference mDatabaseReference;
+    ImageView imagen1;
+
+
+    private static final String PATH_IMAGE="Inscripcion";
 
     public Etapa3() {
         // Required empty public constructor
@@ -67,8 +81,36 @@ public class Etapa3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_etapa3, container, false);
+        view = inflater.inflate(R.layout.fragment_etapa3, container, false);
+        imagen1 = view.findViewById(R.id.imagen1);
+        configFirebase();
+        mDatabaseReference.child(PATH_IMAGE).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String  areaName = null;
+                for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
+                    areaName = areaSnapshot.child("FotoUrl").getValue(String.class);
+                }
+                assert areaName != null;
+                Glide
+                        .with(view.getContext())
+                        .load(areaName)
+                        .centerCrop()
+                        .into(imagen1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        return view;
+    }
+
+    private void configFirebase() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        mDatabaseReference = database.getReference();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
