@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vistas.Fragmentos.Etapa1">
+    tools:context=".Vistas.Fragmentos.Etapa4">
+
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SOY ETAPA 1"
+        android:text="SOY ETAPA 4"
         android:textSize="30sp"
         android:textAlignment="center"/>
+
 </FrameLayout>

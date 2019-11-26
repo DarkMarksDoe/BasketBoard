@@ -3,11 +3,13 @@ package com.darkmarksdoe.basketboard.Vistas.Actividades;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.darkmarksdoe.basketboard.R;
+import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa2;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.PartidosFragment;
 import com.darkmarksdoe.basketboard.dummy.DummyContent;
 import com.spark.submitbutton.SubmitButton;
@@ -32,6 +34,7 @@ public class PrincipalActivity extends AppCompatActivity implements PartidosFrag
                 try {
                     Intent intento = new Intent( PrincipalActivity.this, CrearPartidoActivity.class);
                     startActivity(intento);
+
                 }catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
