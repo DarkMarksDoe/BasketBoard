@@ -45,7 +45,7 @@ public class Etapa1 extends Fragment {
     private MaterialSpinner spinerSede;
     private View view;
 
-    String Eq1, Eq2, Jornada, Sede;
+    public static String Eq1, Eq2, Jornada, Sede;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,69 +64,84 @@ public class Etapa1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_etapa1, container, false);
+        view = inflater.inflate(R.layout.fragment_etapa1, container, false);
         database = FirebaseDatabase.getInstance();
         cargarElementos();
         nomeConsulta.add("Selecciona un equipo");
         llenarSpinners();
+        eventosSpinners();
         return view;
+    }
+
+    private void eventosSpinners() {
+        spinerEquipo1.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Eq1 = item.toString();
+            }
+        });
+
+        spinerEquipo2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Eq2 = item.toString();
+            }
+        });
+        spinerSede.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Sede = item.toString();
+            }
+        });
     }
 
     private void llenarSpinners() {
         DatabaseReference reference = database.getReference();
-            reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    final List<String> areas = new ArrayList<>();
+                final List<String> areas = new ArrayList<>();
 
-                    for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
-                        String areaName = areaSnapshot.child("Nombre").getValue(String.class);
+                for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
+                    String areaName = areaSnapshot.child("Nombre").getValue(String.class);
 
-                            areas.add(areaName);
-
-                    }
-                    ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
-                    areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinerEquipo1.setAdapter(areasAdapter);
-                    areasAdapter.remove(Eq1);
-                    spinerEquipo2.setAdapter(areasAdapter);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    areas.add(areaName);
 
                 }
-            });
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
+                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerEquipo1.setAdapter(areasAdapter);
+                areasAdapter.remove(Eq1);
+                spinerEquipo2.setAdapter(areasAdapter);
+            }
 
-            reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    final List<String> sedes = new ArrayList<>();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    for (DataSnapshot sedeSnapshot: dataSnapshot.getChildren()){
-                        String Sede = sedeSnapshot.child("Sede").getValue(String.class);
-                        sedes.add(Sede);
-                    }
+            }
+        });
 
-                    ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, sedes);
-                    sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinerSede.setAdapter(sedesAdapter);
+        reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<String> sedes = new ArrayList<>();
+
+                for (DataSnapshot sedeSnapshot : dataSnapshot.getChildren()) {
+                    String Sede = sedeSnapshot.child("Sede").getValue(String.class);
+                    sedes.add(Sede);
                 }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, sedes);
+                sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerSede.setAdapter(sedesAdapter);
+            }
 
-                }
-            });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            spinerEquipo1.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                    Eq1 = item.toString();
-                    Toast.makeText( view.getContext(), ""+Eq1, Toast.LENGTH_SHORT).show();
-                }
-            });
+            }
+        });
     }
 
     private void cargarElementos() {

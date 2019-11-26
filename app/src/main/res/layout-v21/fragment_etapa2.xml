@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="0.2"/>
 
         <com.jaredrummler.materialspinner.MaterialSpinner
             android:gravity="center"
@@ -37,11 +37,96 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="0.0001"/>
 
         <com.jaredrummler.materialspinner.MaterialSpinner
             android:gravity="center"
             android:id="@+id/et2_spinner_umpire1"
+            android:elevation="2dp"
+            android:popupBackground="@android:drawable/dialog_holo_light_frame"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            app:ms_padding_left="55dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0001"/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:gravity="center"
+            android:id="@+id/et2_spinner_umpire2"
+            android:elevation="2dp"
+            android:popupBackground="@android:drawable/dialog_holo_light_frame"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            app:ms_padding_left="55dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0001"/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:gravity="center"
+            android:id="@+id/et2_spinner_scorer"
+            android:elevation="2dp"
+            android:popupBackground="@android:drawable/dialog_holo_light_frame"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            app:ms_padding_left="55dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0001"/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:gravity="center"
+            android:id="@+id/et2_spinner_assistant_scorer"
+            android:elevation="2dp"
+            android:popupBackground="@android:drawable/dialog_holo_light_frame"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            app:ms_padding_left="55dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0001"/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:gravity="center"
+            android:id="@+id/et2_spinner_timer"
+            android:elevation="2dp"
+            android:popupBackground="@android:drawable/dialog_holo_light_frame"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            app:ms_padding_left="55dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".0001"/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:gravity="center"
+            android:id="@+id/et2_spinner_shot_clock_operator"
             android:elevation="2dp"
             android:popupBackground="@android:drawable/dialog_holo_light_frame"
             android:layout_width="match_parent"

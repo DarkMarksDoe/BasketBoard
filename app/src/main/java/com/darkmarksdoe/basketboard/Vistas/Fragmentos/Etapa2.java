@@ -36,7 +36,9 @@ public class Etapa2 extends Fragment {
     //Instancias propias
     private View view;
     private FirebaseDatabase database;
-    MaterialSpinner et2_spinner_crew_chief,et2_spinner_umpire1;
+    MaterialSpinner et2_spinner_crew_chief,et2_spinner_umpire1,et2_spinner_umpire2,et2_spinner_scorer, et2_spinner_assistant_scorer;
+    MaterialSpinner et2_spinner_timer, et2_spinner_shot_clock_operator;
+    public static String CrewChief, Umpire1, Umpire2, Scorer, Assistant_Scorer, Timer, Shot_Clock_Operator;
     private final static String PATH_ARBITROS = "Arbitros";
 
 
@@ -46,6 +48,7 @@ public class Etapa2 extends Fragment {
     private final List<String> lista_scorer = new ArrayList<>();
     private final List<String> lista_assistent_scorer = new ArrayList<>();
     private final List<String> timer = new ArrayList<>();
+    private final List<String> lista_clock_operator = new ArrayList<>();
 
 
     public Etapa2() {
@@ -79,14 +82,63 @@ public class Etapa2 extends Fragment {
         cargarElementos();
         agregarTituloListas();
         llenarSpiners();
-
+        eventosSpinners();
         return view;
     }
 
+    private void eventosSpinners() {
+        et2_spinner_crew_chief.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                CrewChief = item.toString();
+            }
+        });
+        et2_spinner_umpire1.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Umpire1 = item.toString();
+            }
+        });
+        et2_spinner_umpire2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Umpire2 = item.toString();
+            }
+        });
+        et2_spinner_scorer.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Scorer = item.toString();
+            }
+        });
+        et2_spinner_assistant_scorer.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Assistant_Scorer = item.toString();
+            }
+        });
+        et2_spinner_timer.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Timer = item.toString();
+            }
+        });
+        et2_spinner_shot_clock_operator.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Shot_Clock_Operator = item.toString();
+            }
+        });
+    }
 
     private void cargarElementos() {
         et2_spinner_crew_chief = view.findViewById(R.id.et2_spinner_crew_chief);
         et2_spinner_umpire1 = view.findViewById(R.id.et2_spinner_umpire1);
+        et2_spinner_umpire2 = view.findViewById(R.id.et2_spinner_umpire2);
+        et2_spinner_scorer = view.findViewById(R.id.et2_spinner_scorer);
+        et2_spinner_assistant_scorer = view.findViewById(R.id.et2_spinner_assistant_scorer);
+        et2_spinner_timer = view.findViewById(R.id.et2_spinner_timer);
+        et2_spinner_shot_clock_operator = view.findViewById(R.id.et2_spinner_shot_clock_operator);
     }
 
 
@@ -97,6 +149,7 @@ public class Etapa2 extends Fragment {
         lista_scorer.add("Scorer");
         lista_assistent_scorer.add("Assistent Scorer");
         timer.add("Timer");
+        lista_clock_operator.add("Shot Clock Operator");
     }
 
 
@@ -110,13 +163,28 @@ public class Etapa2 extends Fragment {
                 for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
                     String areaName = areaSnapshot.child("Nombre").getValue(String.class);
                     lista_crew_chief.add(areaName);
+                    lista_umpire1.add(areaName);
+                    lista_umpire2.add(areaName);
+                    lista_scorer.add(areaName);
                     lista_assistent_scorer.add(areaName);
+                    timer.add(areaName);
+                    lista_clock_operator.add(areaName);
                 }
                 ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_crew_chief);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 et2_spinner_crew_chief.setAdapter(areasAdapter);
-                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_assistent_scorer);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_umpire1);
                 et2_spinner_umpire1.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_umpire2);
+                et2_spinner_umpire2.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_scorer);
+                et2_spinner_scorer.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_assistent_scorer);
+                et2_spinner_assistant_scorer.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, timer);
+                et2_spinner_timer.setAdapter(areasAdapter);
+                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_clock_operator);
+                et2_spinner_shot_clock_operator.setAdapter(areasAdapter);
             }
 
             @Override
