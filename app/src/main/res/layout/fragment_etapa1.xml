@@ -3,11 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vistas.Fragmentos.Etapa1">
-    <TextView
+    android:layout_gravity="center"
+    tools:context=".Vistas.Fragmentos.Etapa1"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SOY ETAPA 1"
-        android:textSize="30sp"
-        android:textAlignment="center"/>
+        android:weightSum="10">
+
+        <Spinner
+            android:id="@+id/et1_spinner_equipo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:spinnerMode="dialog" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+        <Spinner
+            android:id="@+id/et1_spinner_equipo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
+
+
 </FrameLayout>

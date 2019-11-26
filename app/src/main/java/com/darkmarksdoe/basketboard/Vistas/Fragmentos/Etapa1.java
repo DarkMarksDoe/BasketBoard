@@ -4,24 +4,43 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.darkmarksdoe.basketboard.R;
+import com.darkmarksdoe.basketboard.dummy.Equipo;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Etapa1 extends Fragment {
+    private static final String PADRE_RUTA = "Equipos";
+    FirebaseDatabase database;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    final List<String> nomeConsulta = new ArrayList<String>();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Spinner et1_spinner_equipo1;
+    Spinner et1_spinner_equipo2;
+    View view;
 
     private OnFragmentInteractionListener mListener;
 
@@ -29,21 +48,10 @@ public class Etapa1 extends Fragment {
         // Required empty public constructor
     }
 
-    public static Etapa1 newInstance(String param1, String param2) {
-        Etapa1 fragment = new Etapa1();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -51,14 +59,42 @@ public class Etapa1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_etapa1, container, false);
+        view= inflater.inflate(R.layout.fragment_etapa1, container, false);
+        database = FirebaseDatabase.getInstance();
+        cargarElementos();
+        nomeConsulta.add("Selecciona un equipo");
+        llenarSpinners();
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void llenarSpinners() {
+        DatabaseReference reference = database.getReference();
+            reference.child("Equipos").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    final List<String> areas = new ArrayList<>();
+
+                    for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
+                        String areaName = areaSnapshot.child("Nombre").getValue(String.class);
+                        areas.add(areaName);
+                    }
+                    ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
+                    areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    et1_spinner_equipo1.setAdapter(areasAdapter);
+                    et1_spinner_equipo2.setAdapter(areasAdapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+    }
+
+    private void cargarElementos() {
+        et1_spinner_equipo1 = view.findViewById(R.id.et1_spinner_equipo1);
+        et1_spinner_equipo2 = view.findViewById(R.id.et1_spinner_equipo2);
     }
 
     @Override
@@ -77,7 +113,6 @@ public class Etapa1 extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
