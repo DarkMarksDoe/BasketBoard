@@ -71,11 +71,18 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 Equipo1 = etapa1.Eq1;
                 Equipo2 = etapa1.Eq2;
                 Sede = etapa1.Sede;
-                Toast.makeText(this, "ACTIVIDAD: " + fragmento + etapa1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
             case 2:
                 Etapa2 etapa2=new Etapa2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa2).commit();
+                CrewChief = etapa2.CrewChief;
+                Umpire1 = etapa2.Umpire1;
+                Umpire2 = etapa2.Umpire2;
+                Scorer = etapa2.Scorer;
+                AssistantScorer = etapa2.Assistant_Scorer;
+                Timer = etapa2.Timer;
+                ShotClockOperator = etapa2.Shot_Clock_Operator;
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
             case 3:

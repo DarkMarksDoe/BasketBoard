@@ -39,10 +39,10 @@ public class Etapa1 extends Fragment {
 
     private final List<String> nomeConsulta = new ArrayList<String>();
 
-    private MaterialSpinner spinerEquipo1;
-    private MaterialSpinner spinerEquipo2;
-    private MaterialSpinner spinerJornada;
-    private MaterialSpinner spinerSede;
+    public MaterialSpinner spinerEquipo1;
+    public MaterialSpinner spinerEquipo2;
+    public MaterialSpinner spinerJornada;
+    public MaterialSpinner spinerSede;
     private View view;
 
     public static String Eq1, Eq2, Jornada, Sede;
