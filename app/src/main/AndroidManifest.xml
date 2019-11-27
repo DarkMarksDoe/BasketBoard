@@ -11,22 +11,28 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:fullBackupContent="true"
         android:theme="@style/LoginStyle"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".Vistas.Actividades.PartidoActualActivity"
             android:label="@string/title_activity_partido_actual"
-            android:theme="@style/LoginStyle"></activity>
-        <activity android:name=".Vistas.Actividades.CrearPartidoActivity" />
-        <activity android:name=".Vistas.Actividades.PrincipalActivity" />
-        <activity android:name=".Vistas.Actividades.MainActivity">
+            android:theme="@style/LoginStyle"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Vistas.Actividades.CrearPartidoActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Vistas.Actividades.PrincipalActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Vistas.Actividades.MainActivity"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Vistas.Fragmentos.PartidosFragment">
+        <activity android:name=".Vistas.Fragmentos.PartidosFragment"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

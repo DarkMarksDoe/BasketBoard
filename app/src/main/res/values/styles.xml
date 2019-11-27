@@ -23,5 +23,4 @@
         <item name="colorPrimaryDark">@color/colorTop</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 </resources>

@@ -12,17 +12,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
-            android:contentDescription="@string/submit"
             android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+            android:contentDescription="@string/submit"
+            app:backgroundTint="@color/design_default_color_primary"
+            app:backgroundTintMode="src_over"
+            app:rippleColor="#8C97EB"
+            app:srcCompat="@drawable/ic_dick1"
+            tools:ignore="VectorDrawableCompat" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:contentDescription="@string/submit"
             android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_media_ff" />
+            android:contentDescription="@string/submit"
+            app:backgroundTint="@color/design_default_color_primary"
+            app:backgroundTintMode="src_over"
+            app:rippleColor="#8C97EB"
+            app:srcCompat="@drawable/ic_dick2"
+            tools:ignore="VectorDrawableCompat" />
 
 </FrameLayout>
