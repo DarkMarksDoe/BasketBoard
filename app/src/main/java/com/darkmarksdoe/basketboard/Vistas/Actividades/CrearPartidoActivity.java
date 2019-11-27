@@ -41,7 +41,6 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
             @Override
             public void onClick(View v) {
                 fragmento += 1;
-                asignarValores();
                 comparar();
             }
         });
@@ -99,8 +98,12 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
             case 5:
-                Intent intentarPartido = new Intent(this,PartidoActualActivity.class);
-                startActivity(intentarPartido);
+                try{
+                    Intent intentarPartido = new Intent(this,PartidoActualActivity.class);
+                    startActivity(intentarPartido);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 break;
 
         }

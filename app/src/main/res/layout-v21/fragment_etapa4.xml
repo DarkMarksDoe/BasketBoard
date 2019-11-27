@@ -6,7 +6,6 @@
     tools:context=".Vistas.Fragmentos.Etapa4">
 
     <LinearLayout
-        android:elevation="2dp"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:paddingTop="16dp"
-        android:weightSum="5">
+        android:weightSum="10">
 
         <TextView
             android:layout_width="match_parent"
@@ -23,14 +22,12 @@
             android:layout_weight="3"/>
 
         <EditText
-            android:id="@+id/et4_textview_fecha"
+            android:id="@+id/et4_edit_text_fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:ems="10"
-            android:text="     27 | 11 | 2019"
-            android:drawablePadding="5dp"
-            android:paddingStart="15dp"
+            android:text="      27 | 11 | 2019"
             android:background="@drawable/custom_button_bg"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto"
@@ -42,12 +39,14 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/et4_textview_hora"
+            android:id="@+id/et4_edit_text_hora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:ems="10"
             android:text="   12:00:00 | PM"
+            android:drawablePadding="5dp"
+            android:paddingStart="15dp"
             android:background="@drawable/custom_button_bg"
             android:textSize="27sp"
             android:layout_gravity="center"
@@ -55,5 +54,5 @@
 
 
     </LinearLayout>
-
+        
 </FrameLayout>

@@ -84,6 +84,12 @@ public class Etapa1 extends Fragment {
                 Sede = item.toString();
             }
         });
+        spinerJornada.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Jornada = item.toString();
+            }
+        });
     }
 
     private void llenarSpinners() {
@@ -126,6 +132,27 @@ public class Etapa1 extends Fragment {
                 ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, sedes);
                 sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinerSede.setAdapter(sedesAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        reference.child("Jornadas").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<String> jornadas = new ArrayList<>();
+
+                for (DataSnapshot jornadaSnapshot : dataSnapshot.getChildren()) {
+                    String Jornadas = jornadaSnapshot.child("Nombre").getValue(String.class);
+                    jornadas.add(Jornadas);
+                }
+
+                ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, jornadas);
+                sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerJornada.setAdapter(sedesAdapter);
             }
 
             @Override
