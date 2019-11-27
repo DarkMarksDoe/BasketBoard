@@ -83,22 +83,7 @@
             android:text="     27 | 11 | 2019"
             android:textSize="27sp" />
 
-        <com.spark.submitbutton.SubmitButton
-            android:id="@+id/btn_comenzarpartido"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:fontFamily="@font/roboto"
-            android:text="@string/btn_comenzarpartido"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:sub_btn_background="@color/colorPrincipal"
-            app:sub_btn_duration="3000"
-            app:sub_btn_line_color="@color/colorPrincipal"
-            app:sub_btn_tick_color="@color/white"
-            tools:ignore="NestedWeights" />
+
 
 
     </LinearLayout>

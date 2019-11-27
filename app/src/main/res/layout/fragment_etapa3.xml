@@ -117,7 +117,8 @@
                 android:contentDescription="@string/submit"
                 android:focusable="true"
                 app:backgroundTint="#EF3D56"
-                app:srcCompat="@android:drawable/ic_menu_add" />
+                app:srcCompat="@drawable/ic_plus"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -20,19 +20,24 @@ import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa4;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.PartidosFragment;
 import com.darkmarksdoe.basketboard.dummy.DummyContent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.spark.submitbutton.SubmitButton;
 
 public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.OnFragmentInteractionListener, Etapa2.OnFragmentInteractionListener, Etapa3.OnFragmentInteractionListener, Etapa4.OnFragmentInteractionListener, Equipo1Fragment.OnListFragmentInteractionListener {
-    private int fragmento = 1;
+    public int fragmento = 1;
     private FloatingActionButton btnSiguiente,btnAnterior;
 
     //Datos del Partido
     String Equipo1, Equipo2, Jornada, Sede;
     String CrewChief, Umpire1, Umpire2, Scorer, AssistantScorer, Timer, ShotClockOperator;
+    SubmitButton btn_comenzarpartido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_partido);
+        btn_comenzarpartido = findViewById(R.id.btn_comenzarpartido);
+        btn_comenzarpartido.setVisibility(View.GONE);
         cargarFragmento1();
         cargarBoton();
         cargarMetodos();
@@ -56,18 +61,26 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 comparar();
             }
         });
+        btn_comenzarpartido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmento = 5;
+                comparar();
+            }
+        });
     }
 
     private void cargarBoton() {
         btnSiguiente = findViewById(R.id.btnSiguiente);
         btnAnterior = findViewById(R.id.btnAnterior);
+
     }
 
     private void asignarValores(){
 
     }
 
-    private void comparar() {
+    public void comparar() {
         switch (fragmento){
             case 1:
                 Etapa1 etapa1=new Etapa1();
@@ -75,7 +88,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 Equipo1 = etapa1.Eq1;
                 Equipo2 = etapa1.Eq2;
                 Sede = etapa1.Sede;
-                Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
+                btn_comenzarpartido.setVisibility(View.GONE);
                 break;
             case 2:
                 Etapa2 etapa2=new Etapa2();
@@ -87,19 +100,19 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 AssistantScorer = etapa2.Assistant_Scorer;
                 Timer = etapa2.Timer;
                 ShotClockOperator = etapa2.Shot_Clock_Operator;
-                Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
+                btn_comenzarpartido.setVisibility(View.GONE);
                 break;
             case 3:
                 Etapa3 etapa3 =new Etapa3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa3).commit();
-                Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 btnSiguiente.show();
+                btn_comenzarpartido.setVisibility(View.GONE);
                 break;
             case 4:
                 Etapa4 etapa4=new Etapa4();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa4).commit();
-                Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 btnSiguiente.hide();
+                btn_comenzarpartido.setVisibility(View.VISIBLE);
                 break;
             case 5:
                 try{
@@ -115,7 +128,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
     }
 
 
-    private void cargarFragmento1() {
+    public void cargarFragmento1() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.layoutCreacion,new Etapa1())
