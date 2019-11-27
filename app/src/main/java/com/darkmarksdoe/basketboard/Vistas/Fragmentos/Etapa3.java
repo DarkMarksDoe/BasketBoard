@@ -42,7 +42,7 @@ public class Etapa3 extends Fragment {
     //Mis datos
     View view;
     private DatabaseReference mDatabaseReference;
-    ImageView imagen1;
+   // ImageView imagen1;
 
 
     private static final String PATH_IMAGE="Inscripcion";
@@ -82,7 +82,7 @@ public class Etapa3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_etapa3, container, false);
-        imagen1 = view.findViewById(R.id.imagen1);
+       // imagen1 = view.findViewById(R.id.imagen1);
         configFirebase();
         mDatabaseReference.child(PATH_IMAGE).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -92,11 +92,11 @@ public class Etapa3 extends Fragment {
                     areaName = areaSnapshot.child("FotoUrl").getValue(String.class);
                 }
                 assert areaName != null;
-                Glide
+              /*  Glide
                         .with(view.getContext())
                         .load(areaName)
                         .centerCrop()
-                        .into(imagen1);
+                        .into(imagen1);*/
             }
 
             @Override

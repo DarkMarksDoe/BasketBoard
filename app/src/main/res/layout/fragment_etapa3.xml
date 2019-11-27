@@ -2,17 +2,115 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/et_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vistas.Fragmentos.Etapa3">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/imagen1"
-        android:layout_width="251dp"
-        android:layout_height="208dp"
-        android:contentDescription="TODO"
-        app:srcCompat="@android:drawable/btn_star" />
+    <LinearLayout
+        android:id="@+id/t3_layout_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:weightSum="10"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            <com.ornach.nobobutton.NoboButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                app:nb_drawableResource="@drawable/basket3"
+                app:nb_text="  Equipo 1"
+                app:nb_textSize="20sp"
+                app:nb_borderColor="#FFFFFF"
+                app:nb_borderWidth="2dp"
+                app:nb_backgroundColor="#EF3D56"
+                app:nb_focusColor="#B83CC3"
+                app:nb_textColor="#FFF"
+                app:nb_radius="15dp"
+                app:iconPadding="@dimen/paddingIcon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.ornach.nobobutton.NoboButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    app:nb_drawableResource="@drawable/basket3"
+                    app:nb_text="  Equipo 2"
+                    app:nb_iconPosition="left"
+                    app:nb_iconPadding="10dp"
+                    app:nb_textSize="20sp"
+                    app:nb_borderColor="#FFFFFF"
+                    app:nb_borderWidth="2dp"
+                    app:nb_backgroundColor="#EF3D56"
+                    app:nb_focusColor="#B83CC3"
+                    app:nb_textColor="#FFF"
+                    app:nb_radius="15dp"/>
 
 
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@color/rosa"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/paddingTabla"
+            android:paddingEnd="@dimen/paddingTabla" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerJugadores"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/et3_botonflotante_agregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:contentDescription="@string/submit"
+                android:focusable="true"
+                app:srcCompat="@android:drawable/ic_media_previous"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -9,7 +9,11 @@
     <color name="colorEditTextLogin">#EEEEEE</color>
     <color name="colorListaPartidos">#362E27</color>
     <color name="colorFondoFragments">#F8BDD1</color>
-
+    //Colores para pruebas
+    <color name="rosa">#FF11CB</color>
+    <color name="azul">#03A9F4</color>
+    <color name="morado">#673AB7</color>
+    <color name="amarillo">#FFEB3B</color>
 
 
 
