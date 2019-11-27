@@ -17,12 +17,7 @@ import com.darkmarksdoe.basketboard.R;
 import com.darkmarksdoe.basketboard.dummy.DummyContent;
 import com.darkmarksdoe.basketboard.dummy.DummyContent.DummyItem;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
+
 public class PartidosFragment extends Fragment {
 
     // TODO: Customize parameter argument names
