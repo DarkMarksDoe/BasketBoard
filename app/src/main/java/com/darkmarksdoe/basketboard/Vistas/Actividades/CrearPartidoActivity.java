@@ -2,6 +2,7 @@ package com.darkmarksdoe.basketboard.Vistas.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +10,16 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.darkmarksdoe.basketboard.R;
+import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Equipo1Fragment;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa1;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa2;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa3;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.Etapa4;
 import com.darkmarksdoe.basketboard.Vistas.Fragmentos.PartidosFragment;
+import com.darkmarksdoe.basketboard.dummy.DummyContent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.OnFragmentInteractionListener, Etapa2.OnFragmentInteractionListener, Etapa3.OnFragmentInteractionListener, Etapa4.OnFragmentInteractionListener {
+public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.OnFragmentInteractionListener, Etapa2.OnFragmentInteractionListener, Etapa3.OnFragmentInteractionListener, Etapa4.OnFragmentInteractionListener, Equipo1Fragment.OnListFragmentInteractionListener {
     private int fragmento = 1;
     private FloatingActionButton btnSiguiente,btnAnterior;
 
@@ -95,6 +98,10 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa4).commit();
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
+            case 5:
+                Intent intentarPartido = new Intent(this,PartidoActualActivity.class);
+                startActivity(intentarPartido);
+                break;
 
         }
 
@@ -109,6 +116,11 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 }

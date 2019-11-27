@@ -31,23 +31,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <com.ornach.nobobutton.NoboButton
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                app:nb_drawableResource="@drawable/basket3"
-                app:nb_text="  Equipo 1"
-                app:nb_textSize="20sp"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#EF3D56"
-                app:nb_focusColor="#B83CC3"
-                app:nb_textColor="#FFF"
-                app:nb_radius="15dp"
-                app:iconPadding="@dimen/paddingIcon" />
+                <com.ornach.nobobutton.NoboButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    app:iconPadding="@dimen/paddingIcon"
+                    app:nb_backgroundColor="#EF3D56"
+                    app:nb_borderColor="#FFFFFF"
+                    app:nb_borderWidth="2dp"
+                    app:nb_drawableResource="@drawable/basket3"
+                    app:nb_focusColor="#B83CC3"
+                    app:nb_radius="15dp"
+                    app:nb_text="  Equipo 1"
+                    app:nb_textColor="#FFF"
+                    app:nb_textSize="20sp" />
 
             </LinearLayout>
 
@@ -82,15 +82,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:background="@color/rosa"
             android:orientation="horizontal"
             android:paddingStart="@dimen/paddingTabla"
             android:paddingEnd="@dimen/paddingTabla" >
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerJugadores"
+            <FrameLayout
+                android:id="@+id/frameLayoutEquipos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+                <fragment
+                    android:id="@+id/fragment"
+                    android:name="com.darkmarksdoe.basketboard.Vistas.Fragmentos.Equipo1Fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="NestedWeights" />
+            </FrameLayout>
+
+
         </LinearLayout>
 
 
