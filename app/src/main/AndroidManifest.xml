@@ -11,13 +11,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/LoginStyle"
+        android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".Vistas.Actividades.PartidoActualActivity"
-            android:label="@string/title_activity_partido_actual"
-            android:theme="@style/LoginStyle"></activity>
-        <activity android:name=".Vistas.Actividades.CrearPartidoActivity" />
+        <activity android:name=".Vistas.Actividades.CrearPartidoActivity"></activity>
         <activity android:name=".Vistas.Actividades.PrincipalActivity" />
         <activity android:name=".Vistas.Actividades.MainActivity">
             <intent-filter>
