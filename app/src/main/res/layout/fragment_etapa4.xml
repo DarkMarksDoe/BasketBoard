@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,43 +16,91 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:paddingTop="16dp"
-        android:weightSum="5">
+        android:weightSum="10">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:elevation="3dp"
+            android:padding="4dp"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="Fecha"/>
 
         <EditText
+            android:layout_marginTop="15dp"
             android:id="@+id/et4_textview_fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:ems="10"
-            android:text="     27 | 11 | 2019"
-            android:drawablePadding="5dp"
-            android:paddingStart="15dp"
-            android:background="@drawable/custom_button_bg"
             android:layout_gravity="center"
+            android:layout_weight=".5"
+            android:background="@drawable/custom_button_bg"
+            android:drawablePadding="5dp"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"
+            android:enabled="false"
+            android:ems="10"
+            android:textAlignment="center"
             android:fontFamily="@font/roboto"
-            android:textSize="27sp"/>
+            android:paddingStart="15dp"
+            android:text="27 | 11 | 2019"
+            android:textSize="27sp"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:elevation="3dp"
+            android:padding="4dp"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="Hora"/>
 
         <EditText
             android:id="@+id/et4_textview_hora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:ems="10"
-            android:text="   12:00:00 | PM"
-            android:background="@drawable/custom_button_bg"
-            android:textSize="27sp"
             android:layout_gravity="center"
-            android:fontFamily="@font/roboto"/>
+            android:layout_marginTop="15dp"
+            android:layout_weight=".5"
+            android:background="@drawable/custom_button_bg"
+            android:clickable="false"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:focusable="false"
+            android:fontFamily="@font/roboto"
+            android:inputType="none"
+            android:paddingStart="15dp"
+            android:text="01:30:00 | PM"
+            android:textSize="27sp" />
+
+        <com.spark.submitbutton.SubmitButton
+            android:id="@+id/btn_comenzarpartido"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="@string/btn_comenzarpartido"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:sub_btn_background="@color/colorPrincipal"
+            app:sub_btn_duration="3000"
+            app:sub_btn_line_color="@color/colorPrincipal"
+            app:sub_btn_tick_color="@color/white"
+            tools:ignore="NestedWeights" />
 
 
     </LinearLayout>

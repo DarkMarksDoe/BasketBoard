@@ -170,6 +170,8 @@ public class Etapa2 extends Fragment {
                     timer.add(areaName);
                     lista_clock_operator.add(areaName);
                 }
+                ArrayAdapter<String> adapterlast = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, lista_clock_operator);
+                adapterlast.setDropDownViewResource(android.R.layout.simple_gallery_item);
                 ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_crew_chief);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 et2_spinner_crew_chief.setAdapter(areasAdapter);
@@ -183,8 +185,8 @@ public class Etapa2 extends Fragment {
                 et2_spinner_assistant_scorer.setAdapter(areasAdapter);
                 areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, timer);
                 et2_spinner_timer.setAdapter(areasAdapter);
-                areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, lista_clock_operator);
-                et2_spinner_shot_clock_operator.setAdapter(areasAdapter);
+                adapterlast = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_gallery_item, lista_clock_operator);
+                et2_spinner_shot_clock_operator.setAdapter(adapterlast);
             }
 
             @Override

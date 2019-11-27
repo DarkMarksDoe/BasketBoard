@@ -1,7 +1,9 @@
 package com.darkmarksdoe.basketboard.Vistas.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -91,11 +93,13 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                 Etapa3 etapa3 =new Etapa3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa3).commit();
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
+                btnSiguiente.show();
                 break;
             case 4:
                 Etapa4 etapa4=new Etapa4();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa4).commit();
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
+                btnSiguiente.hide();
                 break;
             case 5:
                 try{
@@ -109,6 +113,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
         }
 
     }
+
 
     private void cargarFragmento1() {
         getSupportFragmentManager()
