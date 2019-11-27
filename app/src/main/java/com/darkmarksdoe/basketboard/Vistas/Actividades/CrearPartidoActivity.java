@@ -19,6 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.OnFragmentInteractionListener, Etapa2.OnFragmentInteractionListener, Etapa3.OnFragmentInteractionListener, Etapa4.OnFragmentInteractionListener {
     private int fragmento = 1;
     private FloatingActionButton btnSiguiente,btnAnterior;
+
+    //Datos del Partido
+    String Equipo1, Equipo2, Jornada, Sede;
+    String CrewChief, Umpire1, Umpire2, Scorer, AssistantScorer, Timer, ShotClockOperator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +37,8 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmento+=1;
+                fragmento += 1;
+                asignarValores();
                 comparar();
             }
         });
@@ -53,16 +59,30 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
         btnAnterior = findViewById(R.id.btnAnterior);
     }
 
+    private void asignarValores(){
+
+    }
+
     private void comparar() {
         switch (fragmento){
             case 1:
                 Etapa1 etapa1=new Etapa1();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa1).commit();
+                Equipo1 = etapa1.Eq1;
+                Equipo2 = etapa1.Eq2;
+                Sede = etapa1.Sede;
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
             case 2:
                 Etapa2 etapa2=new Etapa2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa2).commit();
+                CrewChief = etapa2.CrewChief;
+                Umpire1 = etapa2.Umpire1;
+                Umpire2 = etapa2.Umpire2;
+                Scorer = etapa2.Scorer;
+                AssistantScorer = etapa2.Assistant_Scorer;
+                Timer = etapa2.Timer;
+                ShotClockOperator = etapa2.Shot_Clock_Operator;
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
             case 3:
