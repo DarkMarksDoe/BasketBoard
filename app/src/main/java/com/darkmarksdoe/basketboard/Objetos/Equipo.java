@@ -1,4 +1,4 @@
-package com.darkmarksdoe.basketboard.dummy;
+package com.darkmarksdoe.basketboard.Objetos;
 
 
 public class Equipo {

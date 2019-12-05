@@ -7,22 +7,49 @@
     android:id="@+id/layoutCreacion"
     tools:context=".Vistas.Actividades.CrearPartidoActivity">
 
+        <com.spark.submitbutton.SubmitButton
+            android:layout_marginTop="50dp"
+            android:id="@+id/btn_comenzarpartido"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="@string/btn_comenzarpartido"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:sub_btn_background="@color/colorPrincipal"
+            app:sub_btn_duration="3000"
+            app:sub_btn_line_color="@color/colorPrincipal"
+            app:sub_btn_tick_color="@color/white"
+            tools:ignore="NestedWeights" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
-            android:contentDescription="@string/submit"
             android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+            android:contentDescription="@string/submit"
+            app:backgroundTint="@color/design_default_color_primary"
+            app:backgroundTintMode="src_over"
+            app:rippleColor="#8C97EB"
+            app:srcCompat="@drawable/ic_dick1"
+            tools:ignore="VectorDrawableCompat" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:contentDescription="@string/submit"
             android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_media_ff" />
+            android:contentDescription="@string/submit"
+            app:backgroundTint="@color/design_default_color_primary"
+            app:backgroundTintMode="src_over"
+            app:rippleColor="#8C97EB"
+            app:srcCompat="@drawable/ic_dick2"
+            tools:ignore="VectorDrawableCompat" />
+
 
 </FrameLayout>

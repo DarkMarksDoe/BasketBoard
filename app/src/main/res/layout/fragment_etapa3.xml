@@ -22,38 +22,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.2"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="10">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
+                tools:ignore="NestedWeights">
 
-            <com.ornach.nobobutton.NoboButton
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                app:nb_drawableResource="@drawable/basket3"
-                app:nb_text="  Equipo 1"
-                app:nb_textSize="20sp"
-                app:nb_borderColor="#FFFFFF"
-                app:nb_borderWidth="2dp"
-                app:nb_backgroundColor="#EF3D56"
-                app:nb_focusColor="#B83CC3"
-                app:nb_textColor="#FFF"
-                app:nb_radius="15dp"
-                app:iconPadding="@dimen/paddingIcon" />
+                <com.ornach.nobobutton.NoboButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    app:iconPadding="@dimen/paddingIcon"
+                    app:nb_backgroundColor="#EF3D56"
+                    app:nb_borderColor="#FFFFFF"
+                    app:nb_borderWidth="2dp"
+                    app:nb_drawableResource="@drawable/basket3"
+                    app:nb_focusColor="#B83CC3"
+                    app:nb_radius="15dp"
+                    app:nb_text="  Equipo 1"
+                    app:nb_textColor="#FFF"
+                    app:nb_textSize="20sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -62,17 +63,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
-                    app:nb_drawableResource="@drawable/basket3"
-                    app:nb_text="  Equipo 2"
-                    app:nb_iconPosition="left"
-                    app:nb_iconPadding="10dp"
-                    app:nb_textSize="20sp"
+                    app:nb_backgroundColor="#EF3D56"
                     app:nb_borderColor="#FFFFFF"
                     app:nb_borderWidth="2dp"
-                    app:nb_backgroundColor="#EF3D56"
+                    app:nb_drawableResource="@drawable/basket3"
                     app:nb_focusColor="#B83CC3"
+                    app:nb_iconPadding="10dp"
+                    app:nb_iconPosition="left"
+                    app:nb_radius="15dp"
+                    app:nb_text="  Equipo 2"
                     app:nb_textColor="#FFF"
-                    app:nb_radius="15dp"/>
+                    app:nb_textSize="20sp" />
 
 
             </LinearLayout>
@@ -80,24 +81,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="8"
-            android:background="@color/rosa"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/paddingTabla"
-            android:paddingEnd="@dimen/paddingTabla" >
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerJugadores"
+            android:orientation="horizontal">
+            <FrameLayout
+                android:id="@+id/frameLayoutEquipos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
+                <fragment
+                    android:id="@+id/fragment"
+                    android:name="com.darkmarksdoe.basketboard.Vistas.Fragmentos.Equipo1Fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="NestedWeights"
+                    tools:layout="@layout/fragment_recycler_equipo1_list" />
+            </FrameLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.8"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -109,8 +116,9 @@
                 android:clickable="true"
                 android:contentDescription="@string/submit"
                 android:focusable="true"
-                app:srcCompat="@android:drawable/ic_media_previous"/>
-
+                app:backgroundTint="#EF3D56"
+                app:srcCompat="@drawable/ic_plus"
+                tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

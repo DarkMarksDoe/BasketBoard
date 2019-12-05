@@ -5,27 +5,18 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.darkmarksdoe.basketboard.R;
-import com.darkmarksdoe.basketboard.dummy.Equipo;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
@@ -93,6 +84,12 @@ public class Etapa1 extends Fragment {
                 Sede = item.toString();
             }
         });
+        spinerJornada.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                Jornada = item.toString();
+            }
+        });
     }
 
     private void llenarSpinners() {
@@ -135,6 +132,27 @@ public class Etapa1 extends Fragment {
                 ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, sedes);
                 sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinerSede.setAdapter(sedesAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        reference.child("Jornadas").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<String> jornadas = new ArrayList<>();
+
+                for (DataSnapshot jornadaSnapshot : dataSnapshot.getChildren()) {
+                    String Jornadas = jornadaSnapshot.child("Nombre").getValue(String.class);
+                    jornadas.add(Jornadas);
+                }
+
+                ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, jornadas);
+                sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerJornada.setAdapter(sedesAdapter);
             }
 
             @Override

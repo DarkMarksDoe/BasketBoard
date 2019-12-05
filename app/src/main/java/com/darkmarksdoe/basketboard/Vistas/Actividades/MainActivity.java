@@ -2,6 +2,7 @@ package com.darkmarksdoe.basketboard.Vistas.Actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.darkmarksdoe.basketboard.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.spark.submitbutton.SubmitButton;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private SubmitButton btn_login;
     private EditText txt_login_Correo, txt_login_Contra;
     private FirebaseAuth.AuthStateListener miListenerDeAutenticacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     if(firebaseAuth.getCurrentUser() != null){
-                        Toast.makeText(MainActivity.this,
-                                "INICIO CORRECTO:\n" + firebaseAuth.getCurrentUser().getEmail().toString(),
-                                Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
-                        startActivity(intent);
-                        //mAuth.signOut();
+                       // mAuth.signOut();
                     }
                 }
             };
@@ -79,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
                     }else{
                         if(task.isCanceled()){
                             Toast.makeText(MainActivity.this, "Inicio cancelado", Toast.LENGTH_SHORT).show();
