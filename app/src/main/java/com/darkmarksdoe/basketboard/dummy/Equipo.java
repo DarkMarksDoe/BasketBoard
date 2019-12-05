@@ -1,10 +1,5 @@
 package com.darkmarksdoe.basketboard.dummy;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
-import java.util.Objects;
 
 public class Equipo {
     private long Conferencia;
