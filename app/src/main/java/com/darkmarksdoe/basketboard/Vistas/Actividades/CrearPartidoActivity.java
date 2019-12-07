@@ -24,7 +24,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
     private FloatingActionButton btnSiguiente,btnAnterior;
 
     //Datos del Partido
-    String Equipo1, Equipo2, Jornada, Sede;
+    String Partido, Jornada, Sede;
     String CrewChief, Umpire1, Umpire2, Scorer, AssistantScorer, Timer, ShotClockOperator;
 
     @Override
@@ -61,16 +61,13 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
         btnAnterior = findViewById(R.id.btnAnterior);
     }
 
-    private void asignarValores(){
-
-    }
-
     private void comparar() {
         switch (fragmento){
             case 1:
                 Etapa1 etapa1=new Etapa1();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa1).commit();
-
+                Partido = etapa1.Partido;
+                Jornada = etapa1.Jornada;
                 Sede = etapa1.Sede;
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;
@@ -104,9 +101,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
                     e.printStackTrace();
                 }
                 break;
-
         }
-
     }
 
     private void cargarFragmento1() {
