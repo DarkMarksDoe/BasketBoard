@@ -70,8 +70,7 @@ public class CrearPartidoActivity extends AppCompatActivity implements Etapa1.On
             case 1:
                 Etapa1 etapa1=new Etapa1();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutCreacion,etapa1).commit();
-                Equipo1 = etapa1.Eq1;
-                Equipo2 = etapa1.Eq2;
+
                 Sede = etapa1.Sede;
                 Toast.makeText(this, "ACTIVIDAD: " + fragmento, Toast.LENGTH_SHORT).show();
                 break;

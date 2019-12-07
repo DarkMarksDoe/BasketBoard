@@ -30,13 +30,12 @@ public class Etapa1 extends Fragment {
 
     private final List<String> nomeConsulta = new ArrayList<String>();
 
-    public MaterialSpinner spinerEquipo1;
-    public MaterialSpinner spinerEquipo2;
+    public MaterialSpinner spinerPartidos;
     public MaterialSpinner spinerJornada;
     public MaterialSpinner spinerSede;
     private View view;
 
-    public static String Eq1, Eq2, Jornada, Sede;
+    public static String Partido, Jornada, Sede;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,19 +64,13 @@ public class Etapa1 extends Fragment {
     }
 
     private void eventosSpinners() {
-        spinerEquipo1.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spinerPartidos.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                Eq1 = item.toString();
+                Partido = item.toString();
             }
         });
 
-        spinerEquipo2.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                Eq2 = item.toString();
-            }
-        });
         spinerSede.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
@@ -88,29 +81,26 @@ public class Etapa1 extends Fragment {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 Jornada = item.toString();
+                spinnerPartido(position);
             }
         });
     }
 
-    private void llenarSpinners() {
-        DatabaseReference reference = database.getReference();
-        reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void spinnerPartido(final int pos){
+        final DatabaseReference reference = database.getReference();
+        reference.child("Fecha " + pos).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final List<String> partidos = new ArrayList<>();
 
-                final List<String> areas = new ArrayList<>();
-
-                for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
-                    String areaName = areaSnapshot.child("Nombre").getValue(String.class);
-
-                    areas.add(areaName);
-
+                for (DataSnapshot partidoSnapshot : dataSnapshot.getChildren()) {
+                    String Partido = partidoSnapshot.child("").getValue(String.class);
+                    partidos.add(Partido);
                 }
-                ArrayAdapter<String> areasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, areas);
-                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinerEquipo1.setAdapter(areasAdapter);
-                areasAdapter.remove(Eq1);
-                spinerEquipo2.setAdapter(areasAdapter);
+
+                ArrayAdapter<String> partidosAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, partidos);
+                partidosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerPartidos.setAdapter(partidosAdapter);
             }
 
             @Override
@@ -118,6 +108,11 @@ public class Etapa1 extends Fragment {
 
             }
         });
+    }
+
+    private void llenarSpinners() {
+        final DatabaseReference reference = database.getReference();
+
 
         reference.child(PADRE_RUTA).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -146,13 +141,13 @@ public class Etapa1 extends Fragment {
                 final List<String> jornadas = new ArrayList<>();
 
                 for (DataSnapshot jornadaSnapshot : dataSnapshot.getChildren()) {
-                    String Jornadas = jornadaSnapshot.child("Nombre").getValue(String.class);
+                    String Jornadas = jornadaSnapshot.child("").getValue(String.class);
                     jornadas.add(Jornadas);
                 }
 
-                ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, jornadas);
-                sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinerJornada.setAdapter(sedesAdapter);
+                ArrayAdapter<String> jornadasAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, jornadas);
+                jornadasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinerJornada.setAdapter(jornadasAdapter);
             }
 
             @Override
@@ -163,8 +158,7 @@ public class Etapa1 extends Fragment {
     }
 
     private void cargarElementos() {
-        spinerEquipo1 = view.findViewById(R.id.et1_spinner_equipo1);
-        spinerEquipo2 = view.findViewById(R.id.et1_spinner_equipo2);
+        spinerPartidos = view.findViewById(R.id.et1_spinner_partidos);
         spinerJornada = view.findViewById(R.id.et1_spinner_jornada);
         spinerSede = view.findViewById(R.id.et1_spinner_sede);
     }
