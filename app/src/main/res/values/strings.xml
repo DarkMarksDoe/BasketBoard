@@ -17,5 +17,6 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="btn_comenzarpartido">COMENZAR PARTIDO</string>
+    <string name="actualizacion">Última actualización: 27/11/2019 - 4:00 a.m.</string>
 
 </resources>

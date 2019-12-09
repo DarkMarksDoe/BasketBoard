@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.darkmarksdoe.basketboard.R;
 import com.google.firebase.database.DataSnapshot;
@@ -146,13 +147,16 @@ public class Etapa1 extends Fragment {
                 final List<String> jornadas = new ArrayList<>();
 
                 for (DataSnapshot jornadaSnapshot : dataSnapshot.getChildren()) {
-                    String Jornadas = jornadaSnapshot.child("Nombre").getValue(String.class);
+                    String Jornadas = jornadaSnapshot.getValue(String.class);
                     jornadas.add(Jornadas);
                 }
-
+                try {
                 ArrayAdapter<String> sedesAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, jornadas);
                 sedesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinerJornada.setAdapter(sedesAdapter);
+                }catch (Exception e){
+                    Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

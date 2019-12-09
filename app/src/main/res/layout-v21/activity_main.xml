@@ -94,7 +94,7 @@
             android:hint="@string/hint_login_contra"
             android:inputType="textPassword"
             android:paddingStart="15dp"
-
+            
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvEspacioLogin"
             app:layout_constraintHorizontal_bias="0.0"
@@ -102,7 +102,7 @@
             tools:ignore="RtlSymmetry,UnknownIdInLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
@@ -112,9 +112,6 @@
                 LAYOUT BOTON LOGIN Y CONTRASEÑA
         -->
         <com.spark.submitbutton.SubmitButton
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -132,24 +129,20 @@
             tools:ignore="NestedWeights" />
 
         <Button
+
             android:id="@+id/customButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24sp"
             android:background="@drawable/custom_button2"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto_light"
             android:text="@string/recordar_contrasena"
             android:textColor="@color/colorPrincipal"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login"
-            tools:ignore="UnusedAttribute" />
+            android:textSize="13sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
